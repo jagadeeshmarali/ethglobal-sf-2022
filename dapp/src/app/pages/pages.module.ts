@@ -11,13 +11,15 @@ import { HomePage } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { NFTPage } from './nfts/nft.component';
 import { UploadPage } from './uploads/upload.component';
+import { NftContractPage } from './nftContract/nftContract.component';
 
 
 @NgModule({
   declarations: [
     HomePage,
     NFTPage,
-    UploadPage
+    UploadPage,
+    NftContractPage
 
   ],
   imports: [
@@ -34,7 +36,8 @@ import { UploadPage } from './uploads/upload.component';
   ],
   exports: [
     NFTPage,
-    UploadPage
+    UploadPage,
+    NftContractPage
   ]
 })
 export class PagesModule { }

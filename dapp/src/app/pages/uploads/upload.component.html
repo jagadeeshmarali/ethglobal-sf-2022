@@ -1,1 +1,72 @@
-<div class="content-body">UPLOADS</div>
+<div class="content-body">
+  <div class="container-fluid">
+    <ng-template #content let-modal>
+      <!-- <div class="modal-header">
+            <h4 class="modal-title">Modal title</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div> -->
+      <div class="modal-body">
+        <button type="button" class="close mb-2" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-default " placeholder="Enter Contract Name"
+              [(ngModel)]="nftContractName" name="nftContractName">
+          </div>
+        </form>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-default " placeholder="Enter NFT Symbol"
+              [(ngModel)]="nftSymbol" name="nftSymbol">
+          </div>
+        </form>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-default " placeholder="Enter Mint Fee" [(ngModel)]="mintFee"
+              name="mintFee">
+          </div>
+        </form>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-default " placeholder="Enter Fee Recipient"
+              [(ngModel)]="feeRecipient" name="feeRecipient">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="deployContract()">Create</button>
+      </div>
+    </ng-template>
+    <div class="d-flex flex-row-reverse">
+      <button (click)="openLg(content)" class="btn btn-primary">Create Project</button>
+    </div>
+    <div class="row ">
+      <ng-container *ngFor="let contract of myNftContracts;let i = index">
+        <div class="col-sm-4">
+          <!-- <div class="card m-2"> -->
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Collection - {{i}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{contract}}</h6>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p> -->
+              <a [routerLink]="[contract,i]" class=" card-link">Card link</a>
+              <!-- <a href="#" class="card-link">Another link</a> -->
+            </div>
+          </div>
+          <!-- <a [routerLink]="['portfolio/new/'+exchange.exchangeId]" (click)="modal.close()">
+              <img [src]="exchange.image" class="mr-2" style="width: 20px">
+              {{exchange.name}}
+            </a> -->
+          <!-- </div> -->
+        </div>
+      </ng-container>
+    </div>
+    <!-- <div class="d-flex flex-row-reverse">
+      <button type="button" class="btn btn-primary">Create Project</button>
+    </div> -->
+  </div>
+</div>
