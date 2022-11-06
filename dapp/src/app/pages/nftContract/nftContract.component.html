@@ -39,17 +39,12 @@
         <div class="col-sm-4">
           <!-- <div class="card m-2"> -->
           <div class="card" style="width: 18rem;">
+            <img class="card-img-top" [src]="contract.image" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Collectable - {{i}}</h5>
-              <!-- <img [src]="sanitizer.bypassSecurityTrustUrl(this.uploadService.downloadFileToVariable(contract.storagePath))" /> -->
-              <h6 class="card-subtitle mb-2 text-muted">{{contract.name}}</h6>
-
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p> -->
-              <!-- <a [routerLink]="[contract,i]" class=" card-link">Card link</a> -->
-              <!-- <a href="#" class="card-link">Another link</a> -->
+              <p class="card-text">{{contract.name}}</p>
             </div>
           </div>
+
           <!-- <a [routerLink]="['portfolio/new/'+exchange.exchangeId]" (click)="modal.close()">
               <img [src]="exchange.image" class="mr-2" style="width: 20px">
               {{exchange.name}}

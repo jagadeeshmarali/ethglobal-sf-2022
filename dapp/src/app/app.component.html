@@ -6,7 +6,9 @@
 <app-navigation></app-navigation>
 <app-header (connectEvent)="connectWallet()"></app-header>
 
+<ng-container *ngIf="sessionFetched">
+  <router-outlet></router-outlet>
+</ng-container>
 
-<router-outlet></router-outlet>
 
 <!-- <app-footer></app-footer> -->

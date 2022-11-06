@@ -3,8 +3,6 @@ import { RentableNftService } from './../../services/rentableNft.service';
 import { Component } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { DomSanitizer } from '@angular/platform-browser';
 import { SessionService } from '../../session.service';
 
 @Component({
@@ -26,19 +24,16 @@ export class NftContractPage {
     private rentableNftService: RentableNftService,
     private route: ActivatedRoute,
     public uploadService: UploadService,
-    public sanitizer: DomSanitizer,
     public sessionService: SessionService
   ) {
-    this.uploadService.getMyUploads(this.sessionService.accounts[0]).then(x => {
-      console.log(x)
-      console.log(this.sessionService.accounts[0])
+    this.uploadService.getMyUploads().then(x => {
       this.myNftCollectables = x;
-      // for (let i = 0; i < this.myNftCollectables.length; i++) {
-      //   this.uploadService.downloadFileToVariable(this.myNftCollectables[i].storagePath).then(data => {
-      //     this.myNftCollectables[i]["image"] = 'data:image/png;base64,' + data.toString('base64');
-      //   })
-      // }
-      // console.log(this.myNftCollectables)
+      for (let i = 0; i < this.myNftCollectables.length; i++) {
+        this.uploadService.downloadFileToVariable(this.myNftCollectables[i].storagePath).then(data => {
+          this.myNftCollectables[i]["image"] = 'data:image/png;base64,' + data.toString('base64');
+        })
+      }
+      console.log(this.myNftCollectables)
     })
 
   }

@@ -15,6 +15,8 @@ export class SessionService {
   constructor() { }
   async getAccounts() {
     this.accounts = await provider.listAccounts();
+    console.log(this.accounts);
+    return this.accounts
   }
   async getBalance(address: string) {
     let balanceObj = await provider.getBalance(address)

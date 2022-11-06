@@ -42,10 +42,8 @@ export class UploadService {
     );
   }
 
-  async getMyUploads(address) {
-
-    console.log(address)
-    return filestorage.listDirectory("29f732d2A7D0Bc29aE1edf5603AfD43E44A5Ea8b");
+  async getMyUploads() {
+    return filestorage.listDirectory(this.sessionService.accounts[0].split("0x")[1]);
   }
   async downloadFileToVariable(storagePath) {
     //create web3 connection
