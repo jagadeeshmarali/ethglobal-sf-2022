@@ -10,7 +10,7 @@ declare const window: any;
 })
 export class AppComponent {
   sessionFetched = false;
-  title = 'web3-angular-starter-kit';
+  title = 'NPass';
   constructor(public sessionService: SessionService,) {
     this.init();
   }

@@ -309,4 +309,10 @@ contract Marketplace is Ownable, ReentrancyGuard, IRentMarketplace {
     function setPlatformFee(uint16 newPlatformFee) external override onlyOwner {
         _platformFee = newPlatformFee;
     }
+    function getBlocktime() returns (uint256){
+        return block.timestamp
+    }
+    function calculateTimeStamp(uint256 days) returns (uint256){
+        return block.timestamp + (60 * 60 * 24 * days) 
+    }
 }
