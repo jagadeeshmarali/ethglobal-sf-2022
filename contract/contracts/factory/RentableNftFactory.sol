@@ -134,4 +134,13 @@ contract RentableNftFactory is Ownable, IRentableNftFactory {
     function getMyProjects() external view returns (address[] memory) {
         return _myProjects[_msgSender()];
     }
+
+    function getExistsForToken(uint256 contract_index, uint256 index)
+        external
+        view
+        returns (bool)
+    {
+        address nft_contract = _myProjects[_msgSender()][contract_index];
+        return RentableNft(nft_contract).getExists(index);
+    }
 }
