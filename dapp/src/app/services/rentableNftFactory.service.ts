@@ -22,4 +22,10 @@ export class NftRentableFactoryService {
     let contract = new ethers.Contract(environment.rentable_nft_factory, rentableNftFactory.abi, signer);
     return contract.functions.getMyProjects();
   }
+  getExistsForToken(index, tokenId) {
+    let provider = new ethers.providers.Web3Provider(window.ethereum);
+    let signer = provider.getSigner(this.sessionService.accounts[0]);
+    let contract = new ethers.Contract(environment.rentable_nft_factory, rentableNftFactory.abi, signer);
+    return contract.functions.getExistsForToken(index, tokenId);
+  }
 }
