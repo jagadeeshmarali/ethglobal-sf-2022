@@ -1,0 +1,65 @@
+<div class="content-body">
+  <div class="container-fluid">
+    <ng-template #content let-modal>
+      <div class="modal-body">
+        <button type="button" class="close mb-2" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="form-control m-1">
+          <label for="description"> Add File</label>
+          <div>
+            <input type="file" id="myFile" name="filename" (change)="handleFileInput($event)">
+          </div>
+        </div>
+        <button class="btn btn-primary" (click)="upload()"> Upload</button>
+        <ng-container *ngIf="mintbutton">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control input-default " placeholder="Enter the mint address"
+                [(ngModel)]="toAddress" name="toAddress">
+            </div>
+          </form>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control input-default " placeholder="Enter URI" [(ngModel)]="uri"
+                name="uri" disabled>
+            </div>
+          </form>
+        </ng-container>
+      </div>
+      <div class="modal-footer" *ngIf="mintbutton">
+        <button type="button" class="btn btn-primary" (click)="deployContract()">Create</button>
+      </div>
+    </ng-template>
+    <div class="d-flex flex-row-reverse m-4">
+      <button (click)="openLg(content)" class="btn btn-primary">Upload NFT</button>
+    </div>
+    <div class="row ">
+      <ng-container *ngFor="let contract of myNftCollectables;let i = index">
+        <div class="col-sm-4">
+          <!-- <div class="card m-2"> -->
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Collectable - {{i}}</h5>
+              <!-- <img [src]="sanitizer.bypassSecurityTrustUrl(this.uploadService.downloadFileToVariable(contract.storagePath))" /> -->
+              <h6 class="card-subtitle mb-2 text-muted">{{contract.name}}</h6>
+
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p> -->
+              <!-- <a [routerLink]="[contract,i]" class=" card-link">Card link</a> -->
+              <!-- <a href="#" class="card-link">Another link</a> -->
+            </div>
+          </div>
+          <!-- <a [routerLink]="['portfolio/new/'+exchange.exchangeId]" (click)="modal.close()">
+              <img [src]="exchange.image" class="mr-2" style="width: 20px">
+              {{exchange.name}}
+            </a> -->
+          <!-- </div> -->
+        </div>
+      </ng-container>
+    </div>
+    <!-- <div class="d-flex flex-row-reverse">
+      <button type="button" class="btn btn-primary">Create Project</button>
+    </div> -->
+  </div>
+</div>
