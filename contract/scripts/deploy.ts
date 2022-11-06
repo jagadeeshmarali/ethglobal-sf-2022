@@ -1,18 +1,16 @@
 import { ethers } from "hardhat";
+import dotenv from 'dotenv';
+dotenv.config();
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
 
-  const lockedAmount = ethers.utils.parseEther("1");
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const rentableFactory = await ethers.getContractFactory("RentableNftFactory");
+  const rf = await rentableFactory.deploy(process.env.MARKET_PLACE_ADDRESS, 1000000000, process.env.FEE_RECEPEINT);
 
-  await lock.deployed();
+  await rf.deployed();
 
-  console.log(`Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
+  console.log('The Contract is deployed to:', rf.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
