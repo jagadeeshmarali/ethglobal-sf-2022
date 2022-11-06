@@ -9,11 +9,15 @@ import { SharedService } from '../shared.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomePage } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
+import { NFTPage } from './nfts/nft.component';
+import { UploadPage } from './uploads/upload.component';
 
 
 @NgModule({
   declarations: [
-    HomePage
+    HomePage,
+    NFTPage,
+    UploadPage
 
   ],
   imports: [
@@ -28,9 +32,9 @@ import { SharedModule } from '../shared/shared.module';
     ComponentModule
 
   ],
-  providers: [
-    SharedService
-  ],
-  bootstrap: []
+  exports: [
+    NFTPage,
+    UploadPage
+  ]
 })
 export class PagesModule { }
